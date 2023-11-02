@@ -1,0 +1,17 @@
+{
+  "orgName": "codebuilder company",
+  "edition": "Enterprise",
+  "hasSampleData": true,
+  "username": "myscratchorg@salesforce.com.2023",
+  "language": "en_US",
+  "adminEmail": "sfdcpanther+ps@gmail.com",
+  "features": ["EnableSetPasswordInApi", "PersonAccounts", "MultiCurrency"  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    }
+  }
+}
