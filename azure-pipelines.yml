@@ -5,21 +5,34 @@
 
 trigger:
 - main
+- release/*
+
+pr:
+ - main
+ - release/*
 
 pool:
   vmImage: ubuntu-latest
-
-
+  
 stages:
+  - stage: Build
+    jobs:
+    - job: BuildJob
+      steps:
+      - script: echo Building!
+      - script: npm install
+      - script: npm install @salesforce/cli --global
+      - script: sf --version
   - stage: Test
-
-  - stage: DeployUS1
-    dependsOn: Test    # this stage runs after Test
-
-  - stage: DeployUS2
-    dependsOn: Test    # this stage runs in parallel with DeployUS1, after Test
-
-  - stage: DeployEurope
-    dependsOn:         # this stage runs after DeployUS1 and DeployUS2
-    - DeployUS1
-    - DeployUS2
+    jobs:
+    - job: TestOnWindows
+      steps:
+      - script: echo Testing on Windows!
+    - job: TestOnLinux
+      steps:
+      - script: echo Testing on Linux!
+  - stage: Deploy
+    jobs:
+    - job: Deploy
+      steps:
+      - script: echo Deploying the code!
