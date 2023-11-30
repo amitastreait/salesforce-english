@@ -38,6 +38,7 @@ stages:
       - script: sf --version
 
   - stage: Build
+    dependsOn: []
     jobs:
     - job: BuildJob
       steps:
