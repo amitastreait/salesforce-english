@@ -23,6 +23,11 @@ stages:
       - script: npm install
       - script: npm install @salesforce/cli --global
       - script: sf --version
+  - stage: BuildWin
+    displayName: Build for Windows
+  - stage: BuildMac
+    displayName: Build for Mac
+    dependsOn: []
   - stage: Test
     jobs:
     - job: TestOnWindows
