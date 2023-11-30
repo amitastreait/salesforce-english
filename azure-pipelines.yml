@@ -15,6 +15,7 @@ pool:
   vmImage: ubuntu-latest
   
 stages:
+
   - stage: Build
     jobs:
     - job: BuildJob
@@ -28,6 +29,7 @@ stages:
   - stage: BuildMac
     displayName: Build for Mac
     dependsOn: []
+
   - stage: Test
     jobs:
     - job: TestOnWindows
@@ -36,6 +38,7 @@ stages:
     - job: TestOnLinux
       steps:
       - script: echo Testing on Linux!
+      
   - stage: Deploy
     jobs:
     - job: Deploy
