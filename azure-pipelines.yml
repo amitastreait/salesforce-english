@@ -14,35 +14,9 @@ pr:
 pool:
   vmImage: ubuntu-latest
   
-  
 stages:
-
-  - stage: BuildWin
-    displayName: Build for Windows
-  - stage: BuildMac
-    displayName: Build for Mac
-    dependsOn: []
-    
-  - stage: Build
-    jobs:
-    - job: BuildJob
-      steps:
-      - script: echo Building!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
-      - script: sf --version
-
-  - stage: Test
-    jobs:
-    - job: TestOnWindows
-      steps:
-      - script: echo Testing on Windows!
-    - job: TestOnLinux
-      steps:
-      - script: echo Testing on Linux!
-      
-  - stage: Deploy
-    jobs:
-    - job: Deploy
-      steps:
-      - script: echo Deploying the code!
+- stage: BuildWin
+  displayName: Build for Windows
+- stage: BuildMac
+  displayName: Build for Mac
+  dependsOn: [] # by specifying an empty array, this stage doesn't depend on the stage before it
