@@ -35,8 +35,6 @@ stages:
     - job: BuildBJob
       steps:
       - script: echo Building!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
       - script: sf --version
       - script: echo $(SFDC_USER_NAME)
       - script: echo $(SFDC_PASSWORD)
@@ -46,8 +44,6 @@ stages:
     - job: BuildJob
       steps:
       - script: echo Building!
-      - script: npm install
-      - script: npm install @salesforce/cli --global
       - script: sf --version
 
   - stage: Test
