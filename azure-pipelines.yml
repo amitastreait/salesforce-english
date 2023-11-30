@@ -14,8 +14,15 @@ pr:
 pool:
   vmImage: ubuntu-latest
   
+  
 stages:
 
+  - stage: BuildWin
+    displayName: Build for Windows
+  - stage: BuildMac
+    displayName: Build for Mac
+    dependsOn: []
+    
   - stage: Build
     jobs:
     - job: BuildJob
@@ -24,11 +31,6 @@ stages:
       - script: npm install
       - script: npm install @salesforce/cli --global
       - script: sf --version
-  - stage: BuildWin
-    displayName: Build for Windows
-  - stage: BuildMac
-    displayName: Build for Mac
-    dependsOn: []
 
   - stage: Test
     jobs:
