@@ -50,11 +50,6 @@ stages:
       - script: npm install
       - script: npm install @salesforce/cli --global
       - script: sf --version
-      - task: PublishBuildArtifacts@1
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
 
   - stage: Test
     jobs:
@@ -70,6 +65,13 @@ stages:
     - job: Deploy
       steps:
       - script: echo Deploying the code!
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+          
       - task: DownloadBuildArtifacts@1
         inputs:
           buildType: 'current'
