@@ -43,6 +43,8 @@ stages:
       - script: echo $(SFDC_PASSWORD)
 
   - stage: Build
+    displayName: Build
+    dependsOn: []
     jobs:
     - job: BuildJob
       steps:
